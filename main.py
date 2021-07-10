@@ -12,7 +12,7 @@ content_file = sys.argv[1]
 ratings_file = sys.argv[2]
 targets_file = sys.argv[3]
 
-# TFIDF
+# TFIDF (TODO MODULARIZAR)
 def TFIDF(data, data_ids):
   n = len(data)
 
@@ -133,7 +133,7 @@ targets_df['UserId'] = targets_df['UserId:ItemId'].transform(lambda x: int(x.spl
 targets_df['ItemId'] = targets_df['UserId:ItemId'].transform(lambda x: int(x.split(":")[1][1:]))
 targets_df = targets_df[['UserId','ItemId']]
 
-## Realizar recomendações
+## Realizar recomendações (IMPROVE, make all recommendations at once with matriz operation)
 np.seterr(divide='ignore', invalid='ignore')
 f = open("results.csv", "w")
 f.write("UserId:ItemId,Prediction\n")
